@@ -1,0 +1,32 @@
+# Binaries
+*.exe
+*.out
+*.o
+*.a
+*.so
+*.dll
+
+# Build artifacts
+/bin/
+/pkg/
+/vendor/
+
+# Go modules cache (if using go mod)
+go.sum
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.iml
+
+# Neovim files
+*.nvimlog
