@@ -10,10 +10,13 @@ func main() {
 	fmt.Println(popcount.PopCount(15))
 	fmt.Println(popcount.PopCountLoop(15))
 	fmt.Println(popcount.PopCountShift64(15))
+	fmt.Println(popcount.PopCountClearNonZero(15))
 	fmt.Println(popcount.PopCount(1))
 	fmt.Println(popcount.PopCountLoop(1))
 	fmt.Println(popcount.PopCountShift64(1))
+	fmt.Println(popcount.PopCountClearNonZero(1))
 	fmt.Println(popcount.PopCount(7))
 	fmt.Println(popcount.PopCountLoop(7))
 	fmt.Println(popcount.PopCountShift64(7))
+	fmt.Println(popcount.PopCountClearNonZero(7))
 }
