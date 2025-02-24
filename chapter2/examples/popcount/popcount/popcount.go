@@ -1,7 +1,5 @@
 package popcount
 
-import "testing"
-
 // pc[i] is the population of count i.
 var pc [256]byte
 
@@ -24,21 +22,18 @@ func PopCount(x uint64) int {
 }
 
 func PopCountLoop(x uint64) int {
-	sum := 0
+	count := 0
 	for i := 0; i < 8; i++ {
-		sum += int(pc[byte(x>>(i*8))])
+		count += int(pc[byte(x>>(i*8))])
 	}
-	return sum
+	return count
 }
 
-func BenchmarkExpression(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCount(18446744073709551615)
+func PopCountShift64(x uint64) int {
+	count := 0
+	for i := 0; i < 64; i++ {
+		count += int(x & 1)
+		x >>= 1
 	}
-}
-
-func BenchmarkLoop(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountLoop(18446744073709551615)
-	}
+	return count
 }
