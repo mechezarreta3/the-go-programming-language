@@ -18,18 +18,12 @@ func main() {
 				fmt.Fprintf(os.Stderr, "Invalid float64 value %v: %v\n", value, err)
 				continue
 			}
-			fmt.Printf("%s = %s,\t%s = %s,\n%s = %s,\t%s = %s,\n%s = %s,\t%s = %s\n\n",
-				conv.Fahrenheit(value), conv.FToC(conv.Fahrenheit(value)),
-				conv.Celsius(value), conv.CToF(conv.Celsius(value)),
-				conv.Feet(value), conv.FToM(conv.Feet(value)),
-				conv.Meters(value), conv.MToF(conv.Meters(value)),
-				conv.Pounds(value), conv.PToK(conv.Pounds(value)),
-				conv.Kilograms(value), conv.KToP(conv.Kilograms(value)))
+			printConversion(value)
 		}
 
 	} else {
 		scanner := bufio.NewScanner(os.Stdin)
-		fmt.Println("Enter float values (press ctrl+d to end): ")
+		fmt.Print("Enter float values (press ctrl+d to end): ")
 		for scanner.Scan() {
 			line := scanner.Text()
 			fields := strings.Fields(line)
@@ -39,12 +33,18 @@ func main() {
 					fmt.Fprintf(os.Stderr, "Invalid float64 value '%s': %v\n", field, err)
 					continue
 				}
-
-				fmt.Printf("%s = %s, %s = %s, %s = %s, %s = %s, %s = %s, %s = %s",
-					conv.FToC(conv.Fahrenheit(value)), conv.CToF(conv.Celsius(value)),
-					conv.FToM(conv.Feet(value)), conv.MToF(conv.Meters(value)),
-					conv.PToK(conv.Pounds(value)), conv.KToP(conv.Kilograms(value)))
+				printConversion(value)
 			}
 		}
 	}
+}
+
+func printConversion(value float64) {
+	fmt.Printf("%s = %s,\t%s = %s,\n%s = %s,\t%s = %s,\n%s = %s,\t%s = %s\n\n",
+		conv.Fahrenheit(value), conv.FToC(conv.Fahrenheit(value)),
+		conv.Celsius(value), conv.CToF(conv.Celsius(value)),
+		conv.Feet(value), conv.FToM(conv.Feet(value)),
+		conv.Meters(value), conv.MToF(conv.Meters(value)),
+		conv.Pounds(value), conv.PToK(conv.Pounds(value)),
+		conv.Kilograms(value), conv.KToP(conv.Kilograms(value)))
 }
