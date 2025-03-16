@@ -7,6 +7,10 @@ func main() {
 	data := []string{"one", "", "three"}
 	fmt.Printf("%q\n", nonempty(data))
 	fmt.Printf("%q\n", data)
+
+	data2 := []string{"one", "", "three"}
+	fmt.Printf("%q\n", nonempty2(data2))
+	fmt.Printf("%q\n", data)
 }
 
 // nonempty returns a slice holding only the non-empty strings.
@@ -20,4 +24,15 @@ func nonempty(strings []string) []string {
 		}
 	}
 	return strings[:i]
+}
+
+// nonempty implementation that uses append
+func nonempty2(strings []string) []string {
+	out := strings[:0] // zero-length slice of original
+	for _, s := range strings {
+		if s != "" {
+			out = append(out, s)
+		}
+	}
+	return out
 }
